@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import static frc.robot.Constants.OperatorConstants.*;
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import frc.robot.Constants.OperatorConstants;
@@ -36,7 +37,9 @@ public class Drive extends Command {
   // controllable.
   @Override
   public void execute() {
-    driveSubsystem.driveArcade(-controller.getRawAxis(OperatorConstants.leftStickY) * DRIVE_SCALING, -controller.getRawAxis(OperatorConstants.rightStickX) * ROTATION_SCALING);
+    driveSubsystem.driveArcade(
+      -MathUtil.applyDeadband(controller.getRawAxis(OperatorConstants.leftStickY), kDriveDeadband) * DRIVE_SCALING,
+      -MathUtil.applyDeadband(controller.getRawAxis(OperatorConstants.rightStickX), kDriveDeadband) * ROTATION_SCALING);
   }
 
   // Called once the command ends or is interrupted.
