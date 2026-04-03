@@ -6,10 +6,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import static frc.robot.Constants.OperatorConstants.*;
 
+import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.ClimbDown;
 import frc.robot.commands.ClimbUp;
 import frc.robot.commands.Drive;
@@ -35,11 +37,11 @@ public class RobotContainer {
   private final ClimberSubsystem climberSubsystem = new ClimberSubsystem();
 
   // The driver's controller
-  private final CommandXboxController driverController = new CommandXboxController(
+  private final CommandJoystick driverController = new CommandJoystick(
       DRIVER_CONTROLLER_PORT);
 
   // The operator's controller, by default it is setup to use a single controller
-  private final CommandXboxController operatorController = new CommandXboxController(
+  private final CommandJoystick operatorController = new CommandJoystick(
       OPERATOR_CONTROLLER_PORT);
 
   // The autonomous chooser
@@ -71,13 +73,13 @@ public class RobotContainer {
   private void configureBindings() {
 
     // While the left bumper on operator controller is held, intake Fuel
-    driverController.leftBumper().whileTrue(new Intake(fuelSubsystem));
+    driverController.button(OperatorConstants.bumperLeft).whileTrue(new Intake(fuelSubsystem));
     // While the right bumper on the operator controller is held, spin up for 1
     // second, then launch fuel. When the button is released, stop.
-    driverController.rightBumper().whileTrue(new LaunchSequence(fuelSubsystem));
+    driverController.button(OperatorConstants.bumperRight).whileTrue(new LaunchSequence(fuelSubsystem));
     // While the A button is held on the operator controller, eject fuel back out
     // the intake
-    driverController.a().whileTrue(new Eject(fuelSubsystem));
+    driverController.button(OperatorConstants.buttonA).whileTrue(new Eject(fuelSubsystem));
    // While the down arrow on the directional pad is held it will unclimb the robot
     driverController.povDown().whileTrue(new ClimbDown(climberSubsystem));
     // While the up arrow on the directional pad is held it will cimb the robot

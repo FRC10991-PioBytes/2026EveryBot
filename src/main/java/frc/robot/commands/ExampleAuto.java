@@ -20,7 +20,7 @@ public class ExampleAuto extends SequentialCommandGroup {
     // Drive backwards for 3 seconds. The driveArcadeAuto command factory
     // intentionally creates a command which does not end which allows us to control
     // the timing using the withTimeout decorator
-    new AutoDrive(driveSubsystem,0.5,  0.0).withTimeout(3),
+    new AutoDrive(driveSubsystem, 0.5, 0.0).withTimeout(3),
     // Spin up the launcher for 0.75 second and then launch balls for 9.25 seconds, for a
     // total of 10 seconds
     new LaunchSequence(ballSubsystem).withTimeout(10));

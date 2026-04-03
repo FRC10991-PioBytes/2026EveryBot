@@ -4,9 +4,6 @@
 
 package frc.robot;
 
-import com.revrobotics.spark.FeedbackSensor;
-import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
-import com.revrobotics.spark.config.SparkFlexConfig;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -54,7 +51,7 @@ public final class Constants {
     public static final double SPIN_UP_SECONDS = 0.75;
   }
 
-  public static final class ClimbConstatns {
+  public static final class ClimbConstants {
     // Motor controller IDs for Climb motor
     public static final int CLIMBER_MOTOR_ID = 7;
 
@@ -71,6 +68,19 @@ public final class Constants {
     // values in the Joystick tab of the Driver Station software
     public static final int DRIVER_CONTROLLER_PORT = 0;
     public static final int OPERATOR_CONTROLLER_PORT = 1;
+
+    public static final int leftStickY = 1;
+    public static final int leftStickX = 0;
+    public static final int rightStickY = 5;
+    public static final int rightStickX = 4;
+    public static final int leftTrigger = 2;
+    public static final int rightTrigger = 3;
+    public static final int buttonA = 1;
+    public static final int buttonB = 2;
+    public static final int buttonX = 3;
+    public static final int buttonY = 4;
+    public static final int bumperLeft = 5;
+    public static final int bumperRight = 6;
 
     // This value is multiplied by the joystick value when rotating the robot to
     // help avoid turning too fast and beign difficult to control
